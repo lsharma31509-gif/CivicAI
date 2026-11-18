@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>CivicAI — Smart Public Complaint Resolver</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="#" aria-label="CivicAI home">
+                <span class="brand-mark"><span></span><span></span><span></span></span>
+                <span><b>Civic</b><strong>AI</strong><small>PUBLIC SERVICE, REIMAGINED</small></span>
+            </a>
+            <div class="workspace-label">WORKSPACE</div>
+            <nav class="nav-menu">
+                <button class="nav-link active" data-page="overview"><span class="nav-icon">▦</span> Overview</button>
+                <button class="nav-link" data-page="new-complaint"><span class="nav-icon">＋</span> Submit a
+                    complaint</button>
+                <button class="nav-link" data-page="track"><span class="nav-icon">◎</span> Track complaints</button>
+                <button class="nav-link" data-page="insights"><span class="nav-icon">◫</span> Civic insights</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="help-card">
+                    <div class="help-icon">✦</div>
+                    <b>Need a hand?</b>
+                    <p>Our civic assistant can help you report an issue.</p>
+                    <button id="open-assistant" class="text-button">Ask CivicAI <span>↗</span></button>
+                </div>
+                <div class="profile">
+                    <div class="avatar">LS</div>
+                    <div><b>Citizen Portal</b><small>Community member</small></div>
+                    <span class="profile-dots">•••</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button>
+                <div class="breadcrumb">Citizen Portal <span>/</span> <b id="breadcrumb-current">Overview</b></div>
+                <div class="top-actions">
+                    <span class="system-status"><i></i> System operational</span>
+                    <button class="icon-button" id="notification-button" aria-label="Notifications">♧<em></em></button>
+                    <div class="top-avatar">LS</div>
+                </div>
+            </header>
+
+            <section class="page active" id="page-overview">
+                <div class="welcome-row">
+                    <div>
+                        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR COMMUNITY, YOUR VOICE</div>
+                        <h1>Good evening, <span>Citizen.</span></h1>
+                        <p class="muted">Let’s make your neighbourhood a better place, together.</p>
+                    </div>
+                    <button class="primary-button" data-go="new-complaint"><span>＋</span> Report an issue</button>
+                </div>
+
+                <div class="hero-panel">
+                    <div class="hero-copy">
+                        <div class="hero-pill"><span>✦</span> AI-POWERED CIVIC SUPPORT</div>
+                        <h2>Every concern deserves<br />to be <span>heard & resolved.</span></h2>
+                        <p>Report public issues in seconds. CivicAI helps categorise your concern, identify the right
+                            department and keep you informed.</p>
+                        <button class="hero-button" data-go="new-complaint">Submit your first report
+                            <span>→</span></button>
+                    </div>
+                    <div class="hero-art" aria-hidden="true">
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+                        <div class="city-building building-one"></div>
+                        <div class="city-building building-two"></div>
+                        <div class="city-building building-three"></div>
+                        <div class="pin-glow"><span>✦</span></div>
+                        <div class="floating-chip chip-top"><i></i> Issue detected</div>
+                        <div class="floating-chip chip-bottom">✓ <span>Community first</span></div>
+                    </div>
+                    <div class="hero-decoration"></div>
+                </div>
+
+                <div class="section-heading">
+                    <div>
+                        <h3>Your civic activity</h3>
+                        <p>A quick look at the reports in this browser.</p>
+                    </div><button class="subtle-button" data-go="track">View all reports <span>→</span></button>
+                </div>
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Total reports</span><span class="stat-icon purple">▤</span></div>
+                        <strong id="stat-total">03</strong><small><span class="dot purple-dot"></span> Submitted by this
+                            device</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Under review</span><span class="stat-icon amber">◷</span></div>
+                        <strong id="stat-review">02</strong><small><span class="dot amber-dot"></span> Awaiting
+                            department action</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Resolved</span><span class="stat-icon green">✓</span></div><strong
+                            id="stat-resolved">01</strong><small><span class="dot green-dot"></span> Marked as
+                            completed</small>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Average response</span><span class="stat-icon blue">⌁</span></div>
+                        <strong>24<span class="stat-unit">h</span></strong><small><span class="dot blue-dot"></span>
+                            Illustrative demo metric</small>
+                    </article>
+                </div>
+
+                <div class="bottom-grid">
+                    <div class="content-card recent-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Recent reports</h3>
+                                <p>Stay up to date with your submissions.</p>
+                            </div><button class="more-button" data-go="track">See all ↗</button>
+                        </div>
+                        <div id="recent-list" class="recent-list"></div>
+                    </div>
+                    <div class="content-card tip-card">
+                        <div class="tip-top"><span class="tip-spark">✦</span><span>COMMUNITY TIP</span></div>
+                        <h3>Make your report<br />more effective.</h3>
+                        <p>Add a clear photo and a precise location. It helps the responsible team understand the issue
+                            faster.</p>
+                        <div class="tip-footer"><span>BETTER REPORTS. BETTER CITIES.</span><span>✧</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="page" id="page-new-complaint">
+                <div class="page-intro">
+                    <div class="eyebrow"><span class="eyebrow-line"></span> TAKE THE FIRST STEP</div>
+                    <h1>Report an <span>issue.</span></h1>
+                    <p class="muted">Tell us what’s happening. CivicAI will help route your report to the right team.
+                    </p>
+                </div>
+                <div class="form-layout">
+                    <form class="content-card complaint-form" id="complaint-form">
+                        <div class="form-section-title"><span class="step-number">01</span>
+                            <div>
+                                <h3>Issue details</h3>
+                                <p>Describe the public issue you want to report.</p>
+                            </div>
+                        </div>
+                        <label for="issue-title">Complaint title <span>*</span></label>
+                        <input id="issue-title" name="title" placeholder="e.g. Large pothole near the main market"
+                            required maxlength="90" />
+                        <label>Choose a category <span>*</span></label>
+                        <div class="category-grid" id="category-grid">
+                            <button type="button" class="category-option selected"
+                                data-category="Roads"><span>⌁</span><b>Roads</b><small>Potholes, damage</small></button>
+                            <button type="button" class="category-option"
+                                data-category="Waste"><span>♲</span><b>Waste</b><small>Garbage,
+                                    cleaning</small></button>
+                            <button type="button" class="category-option"
+                                data-category="Water"><span>◉</span><b>Water</b><small>Leaks, supply</small></button>
+                            <button type="button" class="category-option"
+                                data-category="Electricity"><span>ϟ</span><b>Electricity</b><small>Street
+                                    lights</small></button>
+                            <button type="button" class="category-option"
+                                data-category="Drainage"><span>≋</span><b>Drainage</b><small>Blocked
+                                    drains</small></button>
+                            <button type="button" class="category-option"
+                                data-category="Other"><span>＋</span><b>Other</b><small>Something else</small></button>
+                        </div>
+                        <label for="issue-description">What happened? <span>*</span></label>
+                        <textarea id="issue-description" name="description" rows="5"
+                            placeholder="Describe the issue, how long it has been happening, and how it affects people..."
+                            required maxlength="1200"></textarea>
+                        <div class="char-count"><span id="char-count">0</span>/1200</div>
+                        <div class="form-divider"></div>
+                        <div class="form-section-title"><span class="step-number">02</span>
+                            <div>
+                                <h3>Where is it happening?</h3>
+                                <p>A useful location helps the team find the issue.</p>
+                            </div>
+                        </div>
+                        <label for="issue-location">Location / nearby landmark <span>*</span></label>
+                        <input id="issue-location" name="location" placeholder="Street, area, city or nearby landmark"
+                            required maxlength="160" />
+                        <label for="issue-priority">How urgent is this issue?</label>
+                        <select id="issue-priority" name="priority">
+                            <option value="Medium">Medium — needs attention</option>
+                            <option value="Low">Low — non-urgent</option>
+                            <option value="High">High — safety or major disruption</option>
+                        </select>
+                        <label for="issue-photo">Attach a photo <small>(optional)</small></label>
+                        <label class="upload-box" for="issue-photo"><span class="upload-icon">↑</span><b>Click to upload
+                                an image</b><small>PNG, JPG or WEBP · Max 5 MB</small><span id="file-name"
+                                class="file-name"></span></label>
+                        <input class="file-input" id="issue-photo" type="file"
+                            accept="image/png,image/jpeg,image/webp" />
+                        <div class="privacy-note">♢ Your report is saved in this browser for this demo. Do not include
+                            sensitive personal information.</div>
+                        <button class="primary-button submit-button" type="submit">Analyse & submit report
+                            <span>→</span></button>
+                    </form>
+                    <aside class="form-aside">
+                        <div class="ai-aside-card">
+                            <div class="ai-orb">✦</div>
+                            <div class="mini-label">HOW CIVICAI HELPS</div>
+                            <h3>From concern<br />to action.</h3>
+                            <ul>
+                                <li><span>01</span> Understands your issue</li>
+                                <li><span>02</span> Suggests a department</li>
+                                <li><span>03</span> Creates a trackable report</li>
+                            </ul>
+                            <p>AI suggestions are for demonstration only. Official routing requires a connected civic
+                                authority.</p>
+                        </div>
+                        <div class="aside-note"><span>✧</span>
+                            <div><b>One report can make a difference.</b>
+                                <p>Be clear, respectful and specific. Thank you for speaking up.</p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="page" id="page-track">
+                <div class="page-intro">
+                    <div class="eyebrow"><span class="eyebrow-line"></span> TRANSPARENCY & ACCOUNTABILITY</div>
+                    <h1>Track your <span>reports.</span></h1>
+                    <p class="muted">Every report has a reference ID. Follow its demo status here.</p>
+                </div>
+                <div class="content-card track-card">
+                    <div class="track-toolbar">
+                        <div>
+                            <h3>All complaints</h3>
+                            <p id="track-count">0 reports found</p>
+                        </div>
+                        <div class="filter-wrap"><span>⌕</span><input id="track-search" placeholder="Search reports..."
+                                aria-label="Search reports" /></div><select id="status-filter" class="filter-select">
+                            <option value="All">All statuses</option>
+                            <option value="Under review">Under review</option>
+                            <option value="In progress">In progress</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
+                    </div>
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>REPORT</th>
+                                    <th>CATEGORY</th>
+                                    <th>LOCATION</th>
+                                    <th>DATE</th>
+                                    <th>STATUS</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="complaint-table"></tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="empty-state" hidden><span>◌</span><b>No reports found</b>
+                        <p>Try a different search or submit a new complaint.</p><button class="primary-button"
+                            data-go="new-complaint">Submit a report</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="page" id="page-insights">
+                <div class="page-intro">
+                    <div class="eyebrow"><span class="eyebrow-line"></span> DATA FOR BETTER DECISIONS</div>
+                    <h1>Civic <span>insights.</span></h1>
+                    <p class="muted">A sample view of how civic data can help prioritise community needs.</p>
+                </div>
+                <div class="insight-banner">
+                    <div><span class="hero-pill">✦ DEMO ANALYTICS</span>
+                        <h2>See the bigger picture.</h2>
+                        <p>These sample indicators demonstrate how an authority dashboard could surface trends. They are
+                            not live government statistics.</p>
+                    </div>
+                    <div class="insight-big-number">78<small>%</small><span>Illustrative resolution rate</span></div>
+                </div>
+                <div class="insight-grid">
+                    <div class="content-card insight-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Reports by category</h3>
+                                <p>Illustrative distribution</p>
+                            </div><span class="stat-icon purple">▥</span>
+                        </div>
+                        <div class="bar-list">
+                            <div><span>Roads</span><b>34%</b><i><em style="width:34%"></em></i></div>
+                            <div><span>Waste</span><b>26%</b><i><em style="width:26%"></em></i></div>
+                            <div><span>Water</span><b>18%</b><i><em style="width:18%"></em></i></div>
+                            <div><span>Electricity</span><b>14%</b><i><em style="width:14%"></em></i></div>
+                            <div><span>Other</span><b>8%</b><i><em style="width:8%"></em></i></div>
+                        </div>
+                    </div>
+                    <div class="content-card insight-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>What better civic service looks like</h3>
+                                <p>Core principles</p>
+                            </div><span class="stat-icon green">✦</span>
+                        </div>
+                        <div class="principle-list">
+                            <div><span>01</span>
+                                <div><b>Accessible reporting</b><small>Simple ways for every citizen to raise
+                                        concerns.</small></div>
+                            </div>
+                            <div><span>02</span>
+                                <div><b>Clear ownership</b><small>Route each issue to the responsible team.</small>
+                                </div>
+                            </div>
+                            <div><span>03</span>
+                                <div><b>Visible progress</b><small>Keep citizens informed at every step.</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer"><span>© 2026 CivicAI. Built for better communities.</span><span><i></i> Demo
+                    environment <b>·</b> Not an official government portal</span></footer>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop" id="success-modal">
+        <div class="success-modal"><button class="modal-close" id="modal-close">×</button>
+            <div class="success-check">✓</div>
+            <div class="eyebrow">REPORT CREATED</div>
+            <h2>Your voice is <span>on record.</span></h2>
+            <p id="success-message">Your demo complaint has been saved.</p>
+            <div class="reference-box"><small>YOUR REFERENCE ID</small><b id="reference-id">CIV-000000</b><button
+                    id="copy-reference">Copy</button></div><button class="primary-button modal-done"
+                id="modal-done">View my reports →</button>
+            <p class="modal-disclaimer">Demo only: this report has not been sent to a government department.</p>
+        </div>
+    </div>
+
+    <aside class="assistant-panel" id="assistant-panel" aria-label="CivicAI assistant">
+        <div class="assistant-header">
+            <div class="assistant-avatar">✦</div>
+            <div><b>CivicAI Assistant</b><small><i></i> Here to help</small></div><button
+                id="close-assistant">×</button>
+        </div>
+        <div class="assistant-body" id="assistant-messages">
+            <div class="assistant-message bot">Hi there! I’m CivicAI. Tell me about a public issue and I’ll help you
+                understand how to report it. ✨</div>
+            <div class="quick-prompts"><button>How do I report a pothole?</button><button>What details should I
+                    include?</button></div>
+        </div>
+        <form id="assistant-form" class="assistant-input"><input id="assistant-text"
+                placeholder="Ask about a civic issue..." autocomplete="off" /><button
+                aria-label="Send message">↑</button></form>
+        <div class="assistant-footnote">AI demo assistant · Verify official processes locally</div>
+    </aside>
+    <div class="assistant-scrim" id="assistant-scrim"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
